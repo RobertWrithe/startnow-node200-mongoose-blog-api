@@ -33,12 +33,12 @@ router.get('/:id', (req, res) => {
         });
 });
 
-let dbUser = null;
 
 router.post('/', (req, res) => {
+    let dbUser = null;
 
     User
-        .findById(req.body.authorId)
+        .findById(req.body.author)
         .then(user => {
             // Create a blog
             const newBlog = new Blog(req.body);
