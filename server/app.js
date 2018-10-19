@@ -1,11 +1,14 @@
+require('dotenv').config()
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-mongoose.connect('mongodb://localhost/my-blog', { useNewUrlParser: true });
-// old code:
-// mongoose.connect('mongodb://localhost/my-blog', { useMongoClient: true });
+let connectLink = process.env.ENV === 'production' ? process.env.MLAB_CONNECT : 'mongodb://localhost/my-blog';
+
+mongoose.connect(connectLink, { useNewUrlParser: true });
+
 mongoose.Promise = Promise;
 
 const app = express();
