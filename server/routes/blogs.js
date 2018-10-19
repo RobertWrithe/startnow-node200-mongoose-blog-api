@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Blog = require('../models/Blog');
+const User = require('../models/User');
 
 router.get('/', (req, res) => {
     Blog
@@ -44,6 +45,8 @@ router.post('/', (req, res) => {
 
             // Bind the user ot it
             newBlog.author = user._id;
+
+            dbUser = user;
 
             // Save it to the database
             return newBlog.save();
