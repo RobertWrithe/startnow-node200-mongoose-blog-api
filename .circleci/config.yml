@@ -2,12 +2,18 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: rb-mongoose-blog-api
+  
 version: 2
 jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: circleci/node:9.9.0
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -35,4 +41,5 @@ jobs:
         
       # run tests!
       - run: yarn test
+
 
